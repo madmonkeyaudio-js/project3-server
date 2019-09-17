@@ -3,16 +3,13 @@ const router = require('express').Router();
 const db = require('../models');
 
 router.get('/', ((req, res) => {
-    if(user) {
-        db.Holiday.find()
-        .populate('user')
-        .populate('todos')
-        .then(results => {
-            res.send(results)})
+        db.User.find()
+        .then((user) => {
+            res.send(user)})
         .catch(err => {
             console.log(err);
         })
-    }
+    
 }))
 
 module.exports = router;

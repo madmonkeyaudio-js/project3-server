@@ -52,19 +52,19 @@ router.post('/signup', (req, res) => {
       res.send({ token })
     })
     .catch(err => {
-      console.log('Error when creating new user', err)
+      //console.log('Error when creating new user', err)
       res.status(500).send({ message: 'Error creating user' })
     })
   })
   .catch(err => {
-    console.log('Error in POST /auth/signup', err)
+    //console.log('Error in POST /auth/signup', err)
     res.status(503).send({ message: 'Something wrong, prob DB related. Or you made a typo. One of those.' })
   })
 })
 
 // NOTE: User should be logged in to access this route
 router.get('/current/user', (req, res) => {
-  console.log(req.user)
+  //console.log(req.user)
   // The user is logged in, so req.user should have data!
   if (!req.user || !req.user._id) {
     return res.status(417).send({ message: 'Expectation Failed: Check configuration' })

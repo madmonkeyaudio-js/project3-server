@@ -6,4 +6,5 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern-sei-26', {
   useCreateIndex: true
 })
 
-module.exports.User = require('./user')
+module.exports.User = require('./user');
+module.exports.Holiday = require('./holiday');

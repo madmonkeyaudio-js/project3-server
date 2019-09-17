@@ -1,7 +1,6 @@
-const mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-
-const holidaySchema = new mongooseSchema ({
+let holidaySchema = new mongoose.Schema ({
     place: {
         type: String,
         required: true
@@ -10,14 +9,17 @@ const holidaySchema = new mongooseSchema ({
         type: Number, 
         required: true
     },
-    holidayName: {
+    name: {
         type: String,
         required: true
     },
     userId: {
         type: String,
         required: true
+    },
+    todo: {
+        type: Array,
     }
 })
 
-module.exports = mongooseSchema('Holiday', holidaySchema)
+module.exports = mongoose.model('Holiday', holidaySchema)

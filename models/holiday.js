@@ -1,4 +1,5 @@
 let mongoose = require('mongoose');
+const Object_Id = mongoose.Schema.Types.ObjectId;
 
 let holidaySchema = new mongoose.Schema ({
     place: {
@@ -14,7 +15,7 @@ let holidaySchema = new mongoose.Schema ({
         required: true
     },
     user: {
-        type: Object_id,
+        type: Object_Id,
         ref: 'User'
     },
     todo: {

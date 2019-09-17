@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-
+const Object_Id = mongoose.Schema.Types.ObjectId;
 const todoSchema = new mongoose.Schema ({
     user: {
-        type: Object_id,
+        type: Object_Id,
         ref: 'User'
     },
-    todo: Array
+    plan: [String]
 
 })
 

@@ -26,7 +26,8 @@ app.use('/auth', expressJwt({
   ]
 }), require('./controllers/auth'))
 
-app.use('/holidayPlan', require('./controllers/holidayPlan'))
+app.use('/holidayPlan', require('./controllers/holidayPlan'));
+app.use('/profile', require('./controllers/profile'));
 
 app.get('*', (req, res) => {
   res.status(404).send({ message: 'Not Found' })

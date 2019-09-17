@@ -13,12 +13,13 @@ let holidaySchema = new mongoose.Schema ({
         type: String,
         required: true
     },
-    userId: {
-        type: String,
-        required: true
+    user: {
+        type: Object_id,
+        ref: 'User'
     },
     todo: {
-        type: Array,
+        type: Object_Id,
+        ref: 'Todo'
     }
 })
 

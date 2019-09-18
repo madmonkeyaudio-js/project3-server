@@ -12,9 +12,15 @@ router.get('/', ((req, res) => {
         user: req.user._id
       })
       .then(holiday => {
-        user.holidays = holiday
-        console.log(user)
-        res.json(user);
+        let userCopy = {
+          firstname: user.firstname,
+          lastname: user.lastname,
+          email: user.email,
+          profileUrl: user.profileUrl,
+          holidays: holiday
+        }
+       
+       res.send(userCopy)
       })
       .catch(err => {
         console.log(err);

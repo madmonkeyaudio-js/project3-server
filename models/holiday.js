@@ -7,12 +7,15 @@ let holidaySchema = new mongoose.Schema ({
         required: true
     },
     date: {
-        type: Number, 
+        type: String, 
         required: true
     },
     name: {
         type: String,
         required: true
+    },
+    description: {
+        type: String,
     },
     user: {
         type: Object_Id,

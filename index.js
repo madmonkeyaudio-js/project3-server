@@ -26,7 +26,10 @@ app.use('/auth', expressJwt({
   ]
 }), require('./controllers/auth'))
 
-app.use('/holidayPlan', require('./controllers/holidayPlan'));
+app.use('/holidayPlan', expressJwt({
+  secret: process.env.JWT_SECRET
+}),require('./controllers/holidayPlan'));
+
 app.use('/profile', expressJwt({
   secret: process.env.JWT_SECRET
 }), require('./controllers/profile'));

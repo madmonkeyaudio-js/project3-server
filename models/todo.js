@@ -6,7 +6,7 @@ const todoSchema = new mongoose.Schema ({
         type: Object_Id,
         ref: 'User'
     },
-    items: [String]
+    item: [String]
 
 })
 

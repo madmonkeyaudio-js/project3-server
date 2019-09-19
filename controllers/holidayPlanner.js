@@ -35,11 +35,13 @@ router.post('/', (req, res) => {
     _id: req.user._id
   })
   .then(user => {
+    console.log('HEEEY THERE USER! FIND ME A HOLIDAY')
    db.Holiday.findOne({
      user: req.user._id,
      name: req.body.name
    })
    .then(holiday => {
+     console.log('HEEEY THERE HOLIDAY! MAKE ME A TODO!')
       db.Todo.create({
         holiday: holiday._id,
         user: req.user._id,

@@ -26,13 +26,17 @@ app.use('/auth', expressJwt({
   ]
 }), require('./controllers/auth'))
 
-app.use('/holidayPlan', expressJwt({
+app.use('/holidaySearch', expressJwt({
   secret: process.env.JWT_SECRET
-}),require('./controllers/holidayPlan'));
+}),require('./controllers/holidaySearch'));
 
 app.use('/profile', expressJwt({
   secret: process.env.JWT_SECRET
 }), require('./controllers/profile'));
+
+app.use('/todoPlanner', expressJwt({
+  secret: process.env.JWT_SECRET
+}), require('./controllers/todoPlanner'));
 
 app.get('*', (req, res) => {
   res.status(404).send({ message: 'Not Found' })

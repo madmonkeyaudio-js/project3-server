@@ -20,10 +20,6 @@ let holidaySchema = new mongoose.Schema ({
     user: {
         type: Object_Id,
         ref: 'User'
-    },
-    todo: {
-        type: Object_Id,
-        ref: 'Todo'
     }
 })
 

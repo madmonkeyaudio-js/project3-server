@@ -17,14 +17,21 @@ router.get('/', ((req, res) => {
           user: req.user._id
          })
          .then(todos => { 
-           console.log('These are my todos!', todos)
+          //  console.log('These are my todos!', todos)
+          //  console.log('These are my holidays foo!', holidays)
           todos.forEach(todo => {
-            let hId = todo.holiday
-            let idx = holidays.findIndex(h => {
-              return h._id === hId
-            })
-            holidays[idx].todos = [];
-            holidays[idx].todos.push(todo);
+          //  let holidayIdx = holidays.findIndex(h => {
+          //    return h._id === todo.holiday
+          //  })
+          //  console.log(holidayIdx)
+          //  console.dir(holidays[holidayIdx])
+          //  if(holidays[holidayIdx].todos === undefined){
+          //   holidays[holidayIdx].todos = []
+          //  };
+          //  holidays[holidayIdx].todos.push(todo);
+          })
+          holidays.forEach(holiday => {
+            console.log('A holidays id:', holiday.id)
           })
           let userCopy = {
             firstname: user.firstname,
@@ -32,7 +39,7 @@ router.get('/', ((req, res) => {
             email: user.email,
             profileUrl: user.profileUrl,
             holidays: holidays,
-            //todos
+            todos
           }  
           res.send(userCopy)
          })
@@ -75,7 +82,5 @@ router.delete('/:id', (req, res) => {
   })
 
 })
-
-
 
 module.exports = router;

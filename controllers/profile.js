@@ -28,10 +28,5 @@ router.get('/', ((req, res) => {
   })
 }))
 
-router.post('/', (req, res) => {
-  console.log(req.body.result)
-  res.send({message: 'it worked foo'})
-
-})
 
 module.exports = router;

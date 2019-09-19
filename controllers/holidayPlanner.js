@@ -17,14 +17,22 @@ router.get('/', ((req, res) => {
           user: req.user._id
          })
          .then(todos => { 
-
+           console.log('These are my todos!', todos)
+          todos.forEach(todo => {
+            let hId = todo.holiday
+            let idx = holidays.findIndex(h => {
+              return h._id === hId
+            })
+            holidays[idx].todos = [];
+            holidays[idx].todos.push(todo);
+          })
           let userCopy = {
             firstname: user.firstname,
             lastname: user.lastname,
             email: user.email,
             profileUrl: user.profileUrl,
             holidays: holidays,
-            todos
+            //todos
           }  
           res.send(userCopy)
          })
@@ -52,7 +60,21 @@ router.post('/', (req, res) => {
     })
   })
 
-    
+  
+router.delete('/:id', (req, res) => {
+  
+  db.Holiday.findByIdAndDelete({
+    _id: req.params.id
+  })
+  .then(() => {
+    console.log('deleted');
+    res.send({message: 'delete successful'})
+  })
+  .catch(err => {
+    console.log(err)
+  })
+
+})
 
 
 

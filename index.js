@@ -34,9 +34,9 @@ app.use('/profile', expressJwt({
   secret: process.env.JWT_SECRET
 }), require('./controllers/profile'));
 
-app.use('/todoPlanner', expressJwt({
+app.use('/holidayPlanner', expressJwt({
   secret: process.env.JWT_SECRET
-}), require('./controllers/todoPlanner'));
+}), require('./controllers/holidayPlanner'));
 
 app.get('*', (req, res) => {
   res.status(404).send({ message: 'Not Found' })

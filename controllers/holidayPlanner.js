@@ -12,16 +12,23 @@ router.get('/', ((req, res) => {
        db.Holiday.find({
          user: req.user._id
        })
-       .then(holiday => {
-         let userCopy = {
-           firstname: user.firstname,
-           lastname: user.lastname,
-           email: user.email,
-           profileUrl: user.profileUrl,
-           holidays: holiday
-         }
-        
-        res.send(userCopy)
+       .then(holidays => {
+         db.Todo.find({
+          user: req.user._id
+         })
+         .then(todos => { 
+
+          let userCopy = {
+            firstname: user.firstname,
+            lastname: user.lastname,
+            email: user.email,
+            profileUrl: user.profileUrl,
+            holidays: holidays,
+            todos
+          }  
+          res.send(userCopy)
+         })
+       
        })
        .catch(err => {
          console.log(err);
@@ -31,28 +38,20 @@ router.get('/', ((req, res) => {
 
 //POST ROUTE
 router.post('/', (req, res) => {
-  db.User.findOne({
-    _id: req.user._id
-  })
-  .then(user => {
-    console.log('HEEEY THERE USER! FIND ME A HOLIDAY')
-   db.Holiday.findOne({
-     user: req.user._id,
-     name: req.body.name
-   })
-   .then(holiday => {
-     console.log('HEEEY THERE HOLIDAY! MAKE ME A TODO!')
-      db.Todo.create({
-        holiday: holiday._id,
-        user: req.user._id,
-        todoItem: req.body.todoItem
-      })
+  console.log(req.body);
+    db.Todo.create({
+      holiday: req.body.holidayId,
+      user: req.user._id,
+      todoItem: req.body.item
     })
     .then(todo => {
       res.send(todo);
+    }) // end todo then
+    .catch(err => {
+      res.send(err);
     })
   })
-})
+
     
 
 

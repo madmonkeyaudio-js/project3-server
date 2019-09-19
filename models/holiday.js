@@ -20,7 +20,11 @@ let holidaySchema = new mongoose.Schema ({
     user: {
         type: Object_Id,
         ref: 'User'
-    }
+    },
+    todos: [{
+        type: Object_Id,
+        ref: 'Todo'
+    }]
 })
 
 module.exports = mongoose.model('Holiday', holidaySchema)

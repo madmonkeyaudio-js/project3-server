@@ -31,7 +31,28 @@ router.get('/', ((req, res) => {
 
 //POST ROUTE
 router.post('/', (req, res) => {
-    res.send('Did you just try to post me you silly')
+  db.User.findOne({
+    _id: req.user._id
+  })
+  .then(user => {
+   db.Holiday.findOne({
+     user: req.user._id,
+     name: req.body.name
+   })
+   .then(holiday => {
+      db.Todo.create({
+        holiday: holiday._id,
+        user: req.user._id,
+        todoItem: req.body.todoItem
+      })
+    })
+    .then(todo => {
+      res.send(todo);
+    })
+  })
 })
+    
+
+
 
 module.exports = router;
